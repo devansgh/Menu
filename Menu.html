@@ -206,7 +206,7 @@
       </div>
       
   <script language="javascript">
-/*
+
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });
@@ -226,7 +226,7 @@ document.addEventListener('contextmenu', function(e) {
   if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
      return false;
   }
-}*/</script>
+}</script>
       <div
         style="position: absolute; left: 506.1px; top: 87.39px"
         class="cls_003"
@@ -1962,25 +1962,84 @@ document.addEventListener('contextmenu', function(e) {
         <span class="cls_007">Vegan & Jain Food Also Available*</span>
       </div>
     </div>
+      
+      <script type="text/javascript">
+      myAlert("My custom title", "Some content");
+      </script>
     <section class="socials" id="al" align="center" style="padding-top: 3940px;     position: absolute;
     margin-left: 42.5%;
     align-self: center;  ">
 
-      <a href="#"
-      onclick="return confirm('sorry it is not available we are working on it')"><i class="fas fa-phone-alt"></i
-      ></a>
-      <a id="mail" href="#"
-      onclick="return confirm('sorry it is not available we are working on it')"><i class="fas fa-envelope"></i
-      ></a>   
+    <a href="#" onclick=" Alert.render('sorry it is not available we are working on it')" ><i class="fas fa-phone-alt"> </i></a>
+    <a href="#" onclick=" Alert.render('sorry it is not available we are working on it')" ><i class="fas fa-envelope"></i></a>
       <a href="https://www.facebook.com/MotiMahalNepal/"
       target="_blank"><i class="fab fa-facebook"></i
       ></a>
       <a href="https://www.tripadvisor.com/3395332"
       target="_blank"><i class="fab fa-tripadvisor"></i
       ></a>
-      <script type="text/javascript">
-        </script>
     </section>
   </body>
+<body>
+  <style>
+    #dialogoverlay{
+      display: none;
+      opacity: .8;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      background: #FFF;
+      width: 100%;
+      z-index: 10;
+    }
+    #dialogbox{
+      display: none;
+      position: fixed;
+      background: #000;
+      border-radius:7px; 
+      width:550px;
+      z-index: 10;
+    }
+    #dialogbox > div{ background:#FFF; margin:8px; }
+    #dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
+    #dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
+    #dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
+    </style>
+    <script>
+    function CustomAlert(){
+        this.render = function(dialog){
+            var winW = window.innerWidth;
+            var winH = window.innerHeight;
+            var dialogoverlay = document.getElementById('dialogoverlay');
+            var dialogbox = document.getElementById('dialogbox');
+            dialogoverlay.style.display = "block";
+            dialogoverlay.style.height = winH+"px";
+            dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+            dialogbox.style.top = "100px";
+            dialogbox.style.display = "block";
+            document.getElementById('dialogboxhead').innerHTML = "Acknowledge This Message By Moti Mahal";
+            document.getElementById('dialogboxbody').innerHTML = dialog;
+            document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+        }
+      this.ok = function(){
+        document.getElementById('dialogbox').style.display = "none";
+        document.getElementById('dialogoverlay').style.display = "none";
+      }
+    }
+    var Alert = new CustomAlert();
+    </script>
+    </head>
+    <body>
+    <div id="dialogoverlay"></div>
+    <div id="dialogbox">
+      <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
+      </div>
+    </div>
+    
+
+    </body>
     
   </html>
