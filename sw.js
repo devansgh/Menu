@@ -1,13 +1,19 @@
-const STATIC_ASSES = [
-    '/Menu.html'
-]
+const cacheName = 'cache-v1';
+const resourcesToPrecache = ['/','Menu.html','logo1.jpg','logo1.png'];
 
-self.addEventListener('install', event => {
-    console.log("sw installed");
-})
+
+self.addEventListener('install' , event =>{
+    console.log('install event')
+    event.waitUntil(
+        caches.open(cachesName)
+        .then(cache => {
+         return cache.addAll(resourcesToPrecache);
+        })
+    )
+});
 self.addEventListener('activate', event => {
-    console.log("sw activate");
-})
+        console.log(' activated event');
+});
 self.addEventListener('fetch', event => {
-    console.log("sw fetch");
-})
+    console.log('Fetch intercepted for:' , event.request.url);
+});    
